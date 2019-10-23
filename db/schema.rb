@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_165615) do
+ActiveRecord::Schema.define(version: 2019_10_23_172602) do
 
   create_table "checks", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2019_10_23_165615) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "employer_id"
+    t.integer "tax_year_id"
   end
 
   create_table "employers", force: :cascade do |t|
@@ -27,12 +30,14 @@ ActiveRecord::Schema.define(version: 2019_10_23_165615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "tax_form", default: false
+    t.integer "user_id"
   end
 
   create_table "tax_years", force: :cascade do |t|
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
