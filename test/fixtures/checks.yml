@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  amount: 1.5
+  mileage: 1
+  check_date: 2019-10-23 12:53:35
+  description: MyText
+
+two:
+  name: MyString
+  amount: 1.5
+  mileage: 1
+  check_date: 2019-10-23 12:53:35
+  description: MyText

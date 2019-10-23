@@ -10,24 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_135139) do
+ActiveRecord::Schema.define(version: 2019_10_23_165615) do
 
   create_table "checks", force: :cascade do |t|
     t.string "name"
     t.float "amount"
-    t.integer "user_id"
-    t.integer "employer_id"
     t.integer "mileage"
-    t.integer "tax_year_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "check_date"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employers", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "tax_form", default: false
@@ -35,7 +31,6 @@ ActiveRecord::Schema.define(version: 2019_06_24_135139) do
 
   create_table "tax_years", force: :cascade do |t|
     t.integer "year"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

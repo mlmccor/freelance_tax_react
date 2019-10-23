@@ -1,0 +1,27 @@
+<h1 id="checkName"><%= @check.name %></h1> <br><br>
+
+<h3 id="checkDescription">Description:</h3>
+<p><%=@check.description %></p><br>
+
+<%=link_to 'Edit Check', edit_tax_year_check_path(@check)%><br>
+
+<button type="button" name="next_button" class= "next" data-id= "<%=@check.id%>" data-ty= "<%=@check.tax_year.id%>">Next Check</button>
+
+
+<script type="text/javascript">
+  $(function () {
+  $("button.next").on("click", function(event) {
+    event.preventDefault()
+    var nextId = parseInt($(".next").attr("data-id")) + 1;
+    tyId = parseInt($(".next").attr("data-ty"))
+    var getting = $.get(`/tax_years/${nextId}/checks/${tyId}`)
+    getting.done(function(data) {
+      debugger
+      $(".checkName").text(data["name"]);
+      $(".checkDescription").text(data["description"]);
+      // re-set the id to current on the link
+      $("button.next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script>

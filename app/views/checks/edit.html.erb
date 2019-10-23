@@ -1,0 +1,32 @@
+<%= render partial: 'users/errors', locals: {object: @check}  %>
+<%= content_tag :div, class: "tyid", data: {temp: @check.tax_year.id} do %>
+<% end %>
+<%= content_tag :div, class: "id", data: {temp: @check.id} do %>
+<% end %>
+
+
+
+<%= form_for(@check, url: tax_year_check_path(@check)) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label 'Date on Check'%>
+  <%= f.date_field :check_date%><br>
+  <%= f.label :amount %>
+  <%= f.number_field :amount, class: :text_field, step: :any %><br>
+  <%= f.label 'Miles Driven (Round-Trip)' %>
+  <%= f.number_field :mileage %><br>
+  <%= f.label 'Select an Employer' %>
+  <%= f.collection_select :employer_id, @check.tax_year.employers.uniq, :id, :name, include_blank: true %><br>
+  <% if !@check.employer %>
+    <%= f.fields_for :employer do |em| %>
+      <%= em.label 'Or Name of a New Employer' %>
+      <%= em.text_field :name %><br>
+    <% end %>
+  <% end %>
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
+  <%= f.submit %>
+<% end %>
+<br><br>
+
+<%= button_to "Delete Check", tax_year_check_path(@check.tax_year, @check), tax_year_id: @check.tax_year, :method => :delete %>

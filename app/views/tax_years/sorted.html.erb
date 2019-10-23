@@ -1,0 +1,17 @@
+<h1 data:"<%=@tax_year.id%>"><%=@tax_year.year%> Checks Sorted By Employers</h1>
+<%= content_tag :div, class: "id", data: {temp: @tax_year.id} do %>
+<% end %><br><br>
+<div class="row">
+  <div class="col-md">
+    <button type="button" name="button" onclick="loadEmployers()">Show Employers</button><br>
+    <button type="button" name="button"></button>
+
+  <div id="employers" class='text-left'>
+
+  </div>
+</div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+</script>

@@ -1,0 +1,27 @@
+<% tax_years.each do |tax_year| %>
+<h4><%= link_to tax_year.year, tax_year_path(tax_year) %></h4>
+<table>
+  <thead>
+    <th>Check Date</th><th>Name</th><th>Amount</th>
+    <th>Mileage</th>
+  </thead>
+    <tbody>
+      <% tax_year.checks.each do |check| %>
+        <% if check.employer == employer %>
+          <tr>
+            <td><%= check.check_date.strftime("%m/%d/%Y") %></td>
+            <td><%=check.name%></td>
+            <td>$<%=check.amount%></td>
+            <td><%=check.mileage%></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td></td>
+        <td>Total</td>
+        <td>$<%= tax_year.checks.by_employer(employer).sum(&:amount) %></td>
+        <td><%= tax_year.checks.by_employer(employer).sum(&:mileage) %></td>
+      </tr>
+    </tbody>
+</table>
+<% end %>
