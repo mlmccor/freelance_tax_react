@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     if !@user == current_user
       redirect_to new_session_path
     end
+    respond_to do |format|
+      format.html
+      format.json {render json: @user, status:201}
+    end
   end
 
   def new
