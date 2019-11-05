@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'welcome/home'
+  get 'welcome/app'
+  devise_for :users
   resources :employers do
     resources :checks
   end
